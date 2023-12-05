@@ -26,12 +26,12 @@ public class Car implements Comparable<Car> {
     }
 
 
-    public boolean isSameDistance(Car competeCar) {
+    public boolean isSameDistance(final Car competeCar) {
         return this.distance.location() == competeCar.distance.location();
     }
 
     @Override
-    public int compareTo(Car competeCar) {
+    public int compareTo(final Car competeCar) {
         return this.distance.location() - competeCar.distance.location();
     }
 }

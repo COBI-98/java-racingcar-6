@@ -7,21 +7,18 @@ import static racingcar.message.RacingCarErrorMessage.NOT_MIN_CAR_COUNT;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-import racingcar.util.RacingCarRandomMoveUtils;
 import racingcar.util.RandomUtils;
 
-public class Cars {
+public record Cars(List<Car> cars) {
 
     private static final int CAR_COUNT_MINIMUM = 2;
-    private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        isDifferentCarName(cars);
-        minimumCountOfCars(cars.size());
-        this.cars = cars;
+    public Cars {
+        validateDifferentCarName(cars);
+        validateMinimumCountOfCars(cars.size());
     }
 
-    private void isDifferentCarName(List<Car> cars) {
+    private void validateDifferentCarName(List<Car> cars) {
         List<String> carName = cars.stream()
                 .map(idx -> idx.getCarName())
                 .collect(Collectors.toList());
@@ -33,7 +30,7 @@ public class Cars {
         }
     }
 
-    private void minimumCountOfCars(int size) {
+    private void validateMinimumCountOfCars(int size) {
         if (size < CAR_COUNT_MINIMUM) {
             throw new IllegalArgumentException(NOT_MIN_CAR_COUNT.getMessage());
         }
@@ -63,9 +60,5 @@ public class Cars {
                 .filter(maxDistanceCar::isSameDistance)
                 .map(Car::getCarName)
                 .collect(Collectors.toList());
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 }

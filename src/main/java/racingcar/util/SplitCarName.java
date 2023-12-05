@@ -9,12 +9,12 @@ public class SplitCarName {
     private static final String SPLIT_DELIMITER = ",";
     private static final String DUPLICATION_DELIMITER_FORMAT = String.format(".*,,.*");
 
-    public static String[] splitCarNames(String input) {
+    public static String[] splitCarNames(final String input) {
         validateDuplicateDelimiter(input);
         return input.split(SPLIT_DELIMITER);
     }
 
-    private static void validateDuplicateDelimiter(String input) {
+    private static void validateDuplicateDelimiter(final String input) {
         boolean hasConsecutiveDelimiters = input.matches(DUPLICATION_DELIMITER_FORMAT);
         
         if (hasConsecutiveDelimiters) {

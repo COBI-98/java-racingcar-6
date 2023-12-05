@@ -11,13 +11,13 @@ public class TryCount {
         this.tryCount = convertStringToInt(tryCount);
     }
 
-    private void isNaturalNumberValidate(String tryCount) {
+    private void isNaturalNumberValidate(final String tryCount) {
         if (!tryCount.matches("^[1-9]\\d*$")){
             throw new IllegalArgumentException(NOT_NATURAL_NUMBER_VALIDATE.getMessage());
         }
     }
 
-    private int convertStringToInt(String input) {
+    private int convertStringToInt(final String input) {
         return Integer.parseInt(input);
     }
 

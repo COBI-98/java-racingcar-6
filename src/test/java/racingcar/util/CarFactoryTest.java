@@ -2,10 +2,7 @@ package racingcar.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
-import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Cars;
@@ -22,7 +19,7 @@ class CarFactoryTest {
         Cars cars = CarFactory.createCars(carNames);
 
         //then
-        assertThat(cars.getCars())
+        assertThat(cars.cars())
                 .extracting("CarName", "Distance")
                 .containsExactlyInAnyOrder(
                         tuple("pobi", 0),

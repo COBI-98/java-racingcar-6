@@ -10,9 +10,15 @@ import racingcar.view.OutputView;
 
 public class RacingCarController {
 
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
-    private final RandomUtils racingCarRandomMoveUtils = new RacingCarRandomMoveUtils();
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final RandomUtils racingCarRandomMoveUtils;
+
+    public RacingCarController() {
+        inputView = new InputView();
+        outputView = new OutputView();
+        racingCarRandomMoveUtils = new RacingCarRandomMoveUtils();
+    }
 
     public void startGame() {
         Cars racingCars = createRacingCars();

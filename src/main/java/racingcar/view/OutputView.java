@@ -29,7 +29,7 @@ public class OutputView {
 
     public void printRoundByExecutionResults(final Cars cars) {
         StringBuilder resultByRound = new StringBuilder();
-        for (Car car : cars.getCars()) {
+        for (final Car car : cars.cars()) {
             resultByRound.append(car.getCarName())
                     .append(COLON_SIGN)
                     .append(MOVE_SIGN.repeat(car.getDistance()))
@@ -53,7 +53,10 @@ public class OutputView {
         System.out.println(winnerRacingCar);
     }
 
-    private boolean isJointWinner(int idx, List<String> winners) {
+    private boolean isJointWinner(
+            final int idx,
+            final List<String> winners
+    ) {
         return idx < (winners.size() - 1);
     }
 }
