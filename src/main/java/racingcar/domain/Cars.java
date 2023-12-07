@@ -19,13 +19,12 @@ public record Cars(List<Car> cars) {
     }
 
     private void validateDifferentCarName(List<Car> cars) {
-        List<String> carName = cars.stream()
+        long distinctCount = cars.stream()
                 .map(idx -> idx.getCarName())
-                .collect(Collectors.toList());
+                .distinct()
+                .count();
 
-        HashSet<String> carNameDuplicateSet = new HashSet<>(carName);
-
-        if (carNameDuplicateSet.size() != carName.size()) {
+        if (distinctCount != cars.size()) {
             throw new IllegalArgumentException(DUPLICATED_CAR_NAME.getMessage());
         }
     }
