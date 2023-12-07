@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.TryCount;
 import racingcar.util.CarFactory;
@@ -31,8 +32,8 @@ public class RacingCarController {
 
     private Cars createRacingCars() {
         outputView.printRequestCarNames();
-        String[] carNames = inputView.inputCarNames();
-        return CarFactory.createCars(carNames);
+        List<String> splitCarNameList = inputView.inputCarNames();
+        return CarFactory.createCars(splitCarNameList);
     }
 
     private TryCount inputTryCount() {

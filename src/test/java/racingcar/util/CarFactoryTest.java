@@ -3,6 +3,7 @@ package racingcar.util;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.groups.Tuple.tuple;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Cars;
@@ -13,7 +14,7 @@ class CarFactoryTest {
     @Test
     void createCarToStartingLine() throws Exception {
         //given
-        String[] carNames = {"pobi", "woni", "jun"};
+        List<String> carNames = List.of("pobi", "woni", "jun");
 
         //when
         Cars cars = CarFactory.createCars(carNames);

@@ -2,8 +2,10 @@ package racingcar.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.tuple;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,11 +19,16 @@ class SplitCarNameTest {
     void splitCarName_constructor_success() throws Exception {
         //given
         String playerInput = "pobi,woni,jun,cobi";
-        String[] strings = SplitCarName.splitCarNames(playerInput);
+        List<String> splitCarNameList = SplitCarName.splitCarNames(playerInput);
 
         //when //then
-        assertThat(strings).hasSize(4)
-                .containsExactly(new String[]{"pobi", "woni", "jun", "cobi"});
+        assertThat(splitCarNameList).hasSize(4)
+                .containsExactlyInAnyOrder(
+                        "pobi",
+                        "woni",
+                        "jun",
+                        "cobi"
+                );
     }
 
     @DisplayName("validateDuplicateDelimiter() : 연속된 구분자가 사용되는 경우")
