@@ -4,8 +4,10 @@ import static racingcar.util.UtilSign.COLON;
 import static racingcar.util.UtilSign.COMMA;
 import static racingcar.util.UtilSign.MOVE;
 import static racingcar.util.UtilSign.NEW_LINE;
+import static racingcar.util.UtilSign.SPACE;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 
@@ -43,21 +45,18 @@ public class OutputView {
         List<String> winners = cars.findWinners();
         StringBuilder winnerRacingCar = new StringBuilder();
         winnerRacingCar.append(FINAL_WINNER)
-                .append(COLON.getTitle());
+                .append(COLON.getTitle())
+                .append(joiningNames(winners));
 
-        for (int carIdx = 0; carIdx < winners.size(); carIdx++) {
-            winnerRacingCar.append(winners.get(carIdx));
-            if (isJointWinner(carIdx, winners)) {
-                winnerRacingCar.append(COMMA.getTitle());
-            }
-        }
         System.out.println(winnerRacingCar);
     }
 
-    private boolean isJointWinner(
-            final int idx,
-            final List<String> winners
-    ) {
-        return idx < (winners.size() - 1);
+    private static String joiningNames(List<String> winners) {
+        return winners.stream()
+                .collect(Collectors.joining(
+                        COMMA.getTitle()
+                        + SPACE.getTitle())
+                );
     }
+
 }
