@@ -44,8 +44,8 @@ public class RacingCarController {
 
     private void racing(Cars cars, TryCount tryCount) {
         outputView.printExecutionResult();
-
-        for (int i = 0; i < tryCount.getTryCount(); i++) {
+        int totalRound = tryCount.getTryCount();
+        for (int race = 0; race < totalRound; race++) {
             cars.moveAll(racingCarRandomMoveUtils);
             outputView.printRoundByExecutionResults(cars);
         }
