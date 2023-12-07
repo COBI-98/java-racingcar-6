@@ -1,19 +1,19 @@
 package racingcar.domain;
 
-import static racingcar.message.RacingCarErrorMessage.NOT_NATURAL_NUMBER_VALIDATE;
+import static racingcar.message.RacingCarErrorMessage.INVALID_TRY_COUNT_NATURAL_NUMBER;
 
 public class TryCount {
 
     private final int tryCount;
 
     public TryCount(final String tryCount) {
-        isNaturalNumberValidate(tryCount);
+        validateNaturalNumber(tryCount);
         this.tryCount = convertStringToInt(tryCount);
     }
 
-    private void isNaturalNumberValidate(final String tryCount) {
+    private void validateNaturalNumber(final String tryCount) {
         if (!tryCount.matches("^[1-9]\\d*$")){
-            throw new IllegalArgumentException(NOT_NATURAL_NUMBER_VALIDATE.getMessage());
+            throw new IllegalArgumentException(INVALID_TRY_COUNT_NATURAL_NUMBER.getMessage());
         }
     }
 

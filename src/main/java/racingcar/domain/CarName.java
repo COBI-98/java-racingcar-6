@@ -1,18 +1,18 @@
 package racingcar.domain;
 
-import static racingcar.message.RacingCarErrorMessage.NOT_CAR_NAME_LENGTH_CORRECT;
+import static racingcar.message.RacingCarErrorMessage.INVALID_CAR_NAME_LENGTH;
 
 public record CarName(String name) {
 
     private static final int CAR_NAME_LENGTH_MAX = 5;
 
     public CarName {
-        isCarNameLengthValidate(name);
+        validateCarNameLengthValidate(name);
     }
 
-    private void isCarNameLengthValidate(final String carName) {
+    private void validateCarNameLengthValidate(final String carName) {
         if (carName.isEmpty() || carName.length() > CAR_NAME_LENGTH_MAX) {
-            throw new IllegalArgumentException(NOT_CAR_NAME_LENGTH_CORRECT.getMessage());
+            throw new IllegalArgumentException(INVALID_CAR_NAME_LENGTH.getMessage());
         }
     }
 

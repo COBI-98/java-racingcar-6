@@ -22,7 +22,7 @@ public class RacingCarController {
 
     public void startGame() {
         Cars racingCars = createRacingCars();
-        TryCount tryCount = getTryCount();
+        TryCount tryCount = inputTryCount();
 
         racing(racingCars, tryCount);
 
@@ -35,7 +35,7 @@ public class RacingCarController {
         return CarFactory.createCars(carNames);
     }
 
-    private TryCount getTryCount() {
+    private TryCount inputTryCount() {
         outputView.printRequestTryCount();
         String inputTryCount = inputView.inputTryCount();
         return new TryCount(inputTryCount);

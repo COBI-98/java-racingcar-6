@@ -1,8 +1,6 @@
 package racingcar.util;
 
-import static racingcar.message.RacingCarErrorMessage.DUPLICATED_DELIMITER;
-
-import racingcar.message.RacingCarErrorMessage;
+import static racingcar.message.RacingCarErrorMessage.INVALID_DUPLICATED_DELIMITER;
 
 public class SplitCarName {
 
@@ -18,7 +16,7 @@ public class SplitCarName {
         boolean hasConsecutiveDelimiters = input.matches(DUPLICATION_DELIMITER_FORMAT);
         
         if (hasConsecutiveDelimiters) {
-            throw new IllegalArgumentException(DUPLICATED_DELIMITER.getMessage());
+            throw new IllegalArgumentException(INVALID_DUPLICATED_DELIMITER.getMessage());
         }
     }
 }
