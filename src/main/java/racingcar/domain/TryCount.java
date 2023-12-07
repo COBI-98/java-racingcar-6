@@ -12,7 +12,7 @@ public class TryCount {
     }
 
     private void validateNaturalNumber(final String tryCount) {
-        if (!tryCount.matches("^[1-9]\\d*$")){
+        if (!tryCount.matches("^[1-9]\\d*$")) {
             throw new IllegalArgumentException(INVALID_TRY_COUNT_NATURAL_NUMBER.getMessage());
         }
     }

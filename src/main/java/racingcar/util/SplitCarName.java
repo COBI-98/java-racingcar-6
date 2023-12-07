@@ -19,7 +19,7 @@ public class SplitCarName {
 
     private static void validateDuplicateDelimiter(final String input) {
         boolean hasConsecutiveDelimiters = input.matches(DUPLICATION_DELIMITER_FORMAT);
-        
+
         if (hasConsecutiveDelimiters) {
             throw new IllegalArgumentException(INVALID_DUPLICATED_DELIMITER.getMessage());
         }

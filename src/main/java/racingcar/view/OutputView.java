@@ -44,6 +44,7 @@ public class OutputView {
     public void printRacingCarWinnerResult(final Cars cars) {
         List<String> winners = cars.findWinners();
         StringBuilder winnerRacingCar = new StringBuilder();
+
         winnerRacingCar.append(FINAL_WINNER)
                 .append(COLON.getTitle())
                 .append(joiningNames(winners));
@@ -55,7 +56,7 @@ public class OutputView {
         return winners.stream()
                 .collect(Collectors.joining(
                         COMMA.getTitle()
-                        + SPACE.getTitle())
+                                + SPACE.getTitle())
                 );
     }
 
