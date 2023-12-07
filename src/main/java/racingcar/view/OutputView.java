@@ -1,5 +1,10 @@
 package racingcar.view;
 
+import static racingcar.util.UtilSign.COLON;
+import static racingcar.util.UtilSign.COMMA;
+import static racingcar.util.UtilSign.MOVE;
+import static racingcar.util.UtilSign.NEW_LINE;
+
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
@@ -10,10 +15,6 @@ public class OutputView {
     private static final String INPUT_TRY_COUNT = "시도할 회수는 몇회인가요?";
     private static final String EXECUTION_RESULT = "실행 결과";
     private static final String FINAL_WINNER = "최종 우승자";
-    private static final String NEW_LINE = "\n";
-    private static final String COLON_SIGN = " : ";
-    private static final String MOVE_SIGN = "-";
-    private static final String COMMA_SIGN = ", ";
 
     public void printRequestCarNames() {
         System.out.println(INPUT_CAR_NAMES);
@@ -24,16 +25,16 @@ public class OutputView {
     }
 
     public void printExecutionResult() {
-        System.out.println(NEW_LINE + EXECUTION_RESULT);
+        System.out.println(NEW_LINE.getTitle() + EXECUTION_RESULT);
     }
 
     public void printRoundByExecutionResults(final Cars cars) {
         StringBuilder resultByRound = new StringBuilder();
         for (final Car car : cars.cars()) {
             resultByRound.append(car.getCarName())
-                    .append(COLON_SIGN)
-                    .append(MOVE_SIGN.repeat(car.getDistance()))
-                    .append(NEW_LINE);
+                    .append(COLON.getTitle())
+                    .append(MOVE.getTitle().repeat(car.getDistance()))
+                    .append(NEW_LINE.getTitle());
         }
         System.out.println(resultByRound);
     }
@@ -42,12 +43,12 @@ public class OutputView {
         List<String> winners = cars.findWinners();
         StringBuilder winnerRacingCar = new StringBuilder();
         winnerRacingCar.append(FINAL_WINNER)
-                .append(COLON_SIGN);
+                .append(COLON.getTitle());
 
         for (int carIdx = 0; carIdx < winners.size(); carIdx++) {
             winnerRacingCar.append(winners.get(carIdx));
             if (isJointWinner(carIdx, winners)) {
-                winnerRacingCar.append(COMMA_SIGN);
+                winnerRacingCar.append(COMMA.getTitle());
             }
         }
         System.out.println(winnerRacingCar);
